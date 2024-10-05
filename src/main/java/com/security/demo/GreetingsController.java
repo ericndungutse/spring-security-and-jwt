@@ -85,8 +85,9 @@ public class GreetingsController {
         user.setEnabled(true);
 
         Authority authority = new Authority();
-        authority.setAuthority("user");
-        authority.setUsername("user");
+        authority.setAuthority("ROLE_USER");
+        authority.setUsername(user.getUsername());
+
         userRepository.save(user);
         authorityRepository.save(authority);
         return "User registered";

@@ -3,14 +3,21 @@ package com.security.demo;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity(name = "authorities")
 @IdClass(AuthorityId.class)
 public class Authority {
     @Id
     private String username;
+
     @Id
     private String authority;
+
+    @ManyToOne
+    @JoinColumn(name = "username", insertable = false, updatable = false)
+    private User user;
 
     public Authority() {
     }
